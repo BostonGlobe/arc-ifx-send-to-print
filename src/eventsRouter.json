@@ -1,0 +1,3 @@
+{
+  "storyPrintHandler": ["composer:send_to_print"]
+}
