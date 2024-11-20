@@ -9,13 +9,15 @@ but provides a way for you to quickly get up and running.
 *****
 */
 
-const getDraftANS = require('./lib/getDraftANS');
-const formatPrintData = require('./lib/createZipFile');
+const getContent = require('./lib/getContent');
+const createZipFile = require('./lib/createZipFile');
+const nameZipFile = require('./lib/nameZipFile');
 
 const buildRequest = async (event) => {
-  const draftAns = await getDraftANS(event.body.story_id);
+  const draftAns = await getContent(event.body.story_id);
   if (draftAns) {
-    const printSuccess = formatPrintData(draftAns);
+    const zipBuffer = await createZipFile(draftAns);
+    const fileName = nameZipFile(draftAns._id);
   }
 };
 

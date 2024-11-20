@@ -6,13 +6,18 @@ const apiHost = process.env.API_HOST;
 const arcPat = process.env.ARC_ACCESS_TOKEN;
 
 // TODO: Switch to the content API
-async function getDraftANS(id) {
+async function getContent(id) {
   try {
     const headers = { Authorization: `Bearer ${arcPat}` };
-    const url = `${apiHost}/draft/v1/story/${id}/revision/draft`;
+    const url = `${apiHost}/content/v4`;
     const ans = await axios.get(
       url,
       {
+        params: {
+          website: 'bostonglobe',
+          _id: id,
+          published: 'false',
+        },
         headers,
       },
     );
@@ -23,4 +28,4 @@ async function getDraftANS(id) {
   }
 }
 
-module.exports = getDraftANS;
+module.exports = getContent;
