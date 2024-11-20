@@ -1,25 +1,23 @@
 const axios = require('axios');
 
 const apiHost = process.env.API_HOST;
-
-// Add in secrets manager
 const arcPat = process.env.ARC_ACCESS_TOKEN;
 
-async function getDraftANS(id) {
+async function getPhotoANS(id) {
   try {
     const headers = { Authorization: `Bearer ${arcPat}` };
-    const url = `${apiHost}/draft/v1/story/${id}/revision/draft`;
+    const url = `${apiHost}/photo/api/v2/photos/${id}`;
     const ans = await axios.get(
       url,
       {
         headers,
       },
     );
-    return ans.data.ans;
+    return ans.data;
   } catch (err) {
-    console.log('Something went wrong getting full ans', err);
+    console.log('Something went wrong getting photo ans', err);
     throw err;
   }
 }
 
-module.exports = getDraftANS;
+module.exports = getPhotoANS;
