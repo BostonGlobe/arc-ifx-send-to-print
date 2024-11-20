@@ -1,5 +1,5 @@
 {
-  "name": "@myorg/myorg-myintegration",
+  "name": "@bostonglobe/arc-ifx-send-to-print",
   "version": "1.0.0",
   "engines": {
     "node": "18.13.0",
