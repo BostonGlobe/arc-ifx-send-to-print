@@ -178,7 +178,7 @@ exports[`getDraftANS fetches the draft ANS from the Draft API 1`] = `
   },
   "label": {},
   "language": "",
-  "last_updated_date": "2024-11-20T21:30:37.465Z",
+  "last_updated_date": "2024-11-20T22:01:38.709Z",
   "owner": {
     "id": "sandbox.bostonglobe",
     "sponsored": false,
@@ -209,9 +209,9 @@ exports[`getDraftANS fetches the draft ANS from the Draft API 1`] = `
   },
   "revision": {
     "branch": "default",
-    "parent_id": "SJ3STXPPOJAQRCNCFGULG5A3EU",
+    "parent_id": "MU4PBRSPLZE6XO4N3NB53C26WY",
     "published": false,
-    "revision_id": "MU4PBRSPLZE6XO4N3NB53C26WY",
+    "revision_id": "SOFYETQSCFFGNBHBRHUNJPOFRA",
     "user_id": "todd.dukart@globe.com",
   },
   "slug": "xxautomationtest",

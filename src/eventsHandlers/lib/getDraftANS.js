@@ -5,6 +5,7 @@ const apiHost = process.env.API_HOST;
 // Add in secrets manager
 const arcPat = process.env.ARC_ACCESS_TOKEN;
 
+// TODO: Switch to the content API
 async function getDraftANS(id) {
   try {
     const headers = { Authorization: `Bearer ${arcPat}` };
@@ -15,7 +16,7 @@ async function getDraftANS(id) {
         headers,
       },
     );
-    return ans.data.ans;
+    return ans.data;
   } catch (err) {
     console.log('Something went wrong getting full ans', err);
     throw err;

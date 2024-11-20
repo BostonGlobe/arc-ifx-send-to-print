@@ -4,25 +4,17 @@ const fs = require('node:fs');
 /**
  * Downloads a photo from the given URL.
  * @param {string} photoUrl
- * @param {string} destination
- * @returns {Promise<void>}
+ * @returns {Promise<Buffer>}
  */
-async function downloadPhoto(photoUrl, destination) {
+async function downloadPhoto(photoUrl) {
   try {
     const response = await axios({
       url: photoUrl,
       method: 'GET',
-      responseType: 'stream',
+      responseType: 'arraybuffer',
     });
 
-    const writeStream = fs.createWriteStream(destination);
-
-    response.data.pipe(writeStream);
-
-    return new Promise((resolve, reject) => {
-      writeStream.on('finish', resolve);
-      writeStream.on('error', reject);
-    });
+    return response.data;
   } catch (err) {
     console.log('Something went wrong downloading photo', err);
     throw err;

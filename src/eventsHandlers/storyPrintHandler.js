@@ -10,7 +10,7 @@ but provides a way for you to quickly get up and running.
 */
 
 const getDraftANS = require('./lib/getDraftANS');
-const formatPrintData = require('./lib/formatPrintData');
+const formatPrintData = require('./lib/createZipFile');
 
 const buildRequest = async (event) => {
   const draftAns = await getDraftANS(event.body.story_id);
