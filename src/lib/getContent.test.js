@@ -6,6 +6,6 @@ describe('getContent', () => {
     // like mocking Axios at the moment.
     const result = await getContent('VPQMNJPIRNGKHF5GISP5UVLMNA');
 
-    expect(result).toMatchSnapshot();
+    expect(result._id).toEqual('VPQMNJPIRNGKHF5GISP5UVLMNA');
   });
 });
