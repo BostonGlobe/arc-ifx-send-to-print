@@ -9,16 +9,20 @@ but provides a way for you to quickly get up and running.
 *****
 */
 
-const getContent = require('./lib/getContent');
-const createZipFile = require('./lib/createZipFile');
-const nameZipFile = require('./lib/nameZipFile');
+const getContent = require('../lib/getContent');
+const createZipFile = require('../lib/createZipFile');
+const nameZipFile = require('../lib/nameZipFile');
+const sendBufferToS3 = require('../lib/sendBufferToS3');
 
 const buildRequest = async (event) => {
-  const draftAns = await getContent(event.body.story_id);
-  if (draftAns) {
-    const zipBuffer = await createZipFile(draftAns);
-    const fileName = nameZipFile(draftAns._id);
+  const contentAns = await getContent(event.body.story_id);
+  if (!contentAns) {
+    throw new Error('Unable to retrieve story content');
   }
+  const zipBuffer = await createZipFile(contentAns);
+  const fileName = nameZipFile(contentAns._id);
+
+  await sendBufferToS3(fileName, zipBuffer);
 };
 
 const storyPrintHandler = async (event) => {

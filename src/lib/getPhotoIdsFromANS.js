@@ -7,13 +7,15 @@ const forEach = require('lodash/find');
  * @returns {string[]}
  */
 function getPhotoIdsFromANS(ansData) {
+  console.log('Parsing content ANS for images...')
+
   const result = [];
 
   const basicPromoItem = get(ansData, 'promo_items.basic');
   if (get(basicPromoItem, 'referent.type') === 'image') {
     // Not using get because I want the script to crash if this doesn't exist.
     result.push(basicPromoItem.referent.id);
-  } else if (get(basicPromoItem,'type') === 'image') {
+  } else if (get(basicPromoItem, 'type') === 'image') {
     result.push(basicPromoItem._id);
   }
 
@@ -22,11 +24,13 @@ function getPhotoIdsFromANS(ansData) {
     (element) => {
       if (get(element, 'type') === 'reference' && get(element, 'referent.type') === 'image') {
         result.push(element.referent.id);
-      } else if (get(element,'type')==='image') {
+      } else if (get(element, 'type') === 'image') {
         result.push(element._id)
       }
     },
   );
+
+  console.log(`Found ${result.count} image(s)`);
 
   return result;
 }

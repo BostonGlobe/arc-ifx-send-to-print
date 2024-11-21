@@ -7,6 +7,7 @@ const fs = require('node:fs');
  * @returns {Promise<Buffer>}
  */
 async function downloadPhoto(photoUrl) {
+  console.log(`Downloading photo ${photoUrl}`);
   try {
     const response = await axios({
       url: photoUrl,
@@ -14,6 +15,7 @@ async function downloadPhoto(photoUrl) {
       responseType: 'arraybuffer',
     });
 
+    console.log('Photo download complete');
     return response.data;
   } catch (err) {
     console.log('Something went wrong downloading photo', err);

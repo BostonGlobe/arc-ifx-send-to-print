@@ -5,8 +5,8 @@ const apiHost = process.env.API_HOST;
 // Add in secrets manager
 const arcPat = process.env.ARC_ACCESS_TOKEN;
 
-// TODO: Switch to the content API
 async function getContent(id) {
+  console.log(`Fetching story content for ${id}`);
   try {
     const headers = { Authorization: `Bearer ${arcPat}` };
     const url = `${apiHost}/content/v4`;
@@ -21,6 +21,7 @@ async function getContent(id) {
         headers,
       },
     );
+    console.log('Story fetch successful');
     return ans.data;
   } catch (err) {
     console.log('Something went wrong getting full ans', err);
