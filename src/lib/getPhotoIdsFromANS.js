@@ -7,7 +7,7 @@ const forEach = require('lodash/find');
  * @returns {string[]}
  */
 function getPhotoIdsFromANS(ansData) {
-  console.log('Parsing content ANS for images...')
+  console.log('Parsing content ANS for images...');
 
   const result = [];
 
@@ -25,7 +25,7 @@ function getPhotoIdsFromANS(ansData) {
       if (get(element, 'type') === 'reference' && get(element, 'referent.type') === 'image') {
         result.push(element.referent.id);
       } else if (get(element, 'type') === 'image') {
-        result.push(element._id)
+        result.push(element._id);
       }
     },
   );

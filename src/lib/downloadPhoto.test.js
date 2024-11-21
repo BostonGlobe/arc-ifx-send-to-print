@@ -7,15 +7,14 @@ expect.extend({
     const pass = isBuffer(received);
     if (pass) {
       return {
-        message: () => `Expected value not to be a Buffer`,
+        message: () => 'Expected value not to be a Buffer',
         pass: true,
       };
-    } else {
-      return {
-        message: () => `Expected value to be a Buffer`,
-        pass: false,
-      };
     }
+    return {
+      message: () => 'Expected value to be a Buffer',
+      pass: false,
+    };
   },
 });
 

@@ -4,7 +4,7 @@ const apiHost = process.env.API_HOST;
 const arcPat = process.env.ARC_ACCESS_TOKEN;
 
 async function getPhotoANS(id) {
-  console.log(`Fetching photo ANS for ID ${id}...`)
+  console.log(`Fetching photo ANS for ID ${id}...`);
   try {
     const headers = { Authorization: `Bearer ${arcPat}` };
     const url = `${apiHost}/photo/api/v2/photos/${id}`;

@@ -1,12 +1,12 @@
-const JSZip = require('jszip')
+const JSZip = require('jszip');
 const map = require('lodash/map');
+const path = require('node:path');
 const getPhotoIdsFromANS = require('./getPhotoIdsFromANS');
 const getPhotoANS = require('./getPhotoANS');
-const path = require('node:path');
 const downloadPhoto = require('./downloadPhoto');
 
 async function createZipFile(ans) {
-  console.log('Creating zip file')
+  console.log('Creating zip file');
   // Create the ZIP file.
   const zipFile = new JSZip();
   const storyId = ans._id;
@@ -26,12 +26,12 @@ async function createZipFile(ans) {
       zipFile.file(`${photoId}${path.extname(ansData.url)}`, photoBuffer);
 
       console.log(`Added photo ${photoId} to zip file`);
-    })
+    }),
   );
 
   console.log('Generating zip file data');
 
-  return await zipFile.generateAsync({ type: 'nodebuffer' });
+  return zipFile.generateAsync({ type: 'nodebuffer' });
 }
 
 module.exports = createZipFile;

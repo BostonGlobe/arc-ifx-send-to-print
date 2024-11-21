@@ -1,4 +1,4 @@
-const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 
 async function sendBufferToS3(fileName, fileBuffer) {
   console.log('Creating S3 client...');
