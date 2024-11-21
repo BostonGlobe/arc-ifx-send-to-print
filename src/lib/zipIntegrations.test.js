@@ -1,5 +1,5 @@
 const JSZip = require('jszip');
-const sort = require('lodash/sortBy')
+const sort = require('lodash/sortBy');
 
 const createZipFile = require('./createZipFile');
 const getContent = require('./getContent');
